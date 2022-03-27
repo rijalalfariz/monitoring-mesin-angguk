@@ -1,9 +1,13 @@
 <?php
 
+use App\Events\DeviceStatusUpdate;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeviceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
+use GuzzleHttp\Psr7\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +23,8 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::get('/profile', [UserController::class, 'profile'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
 Route::get('/edit-profile', [UserController::class, 'edit'])->middleware('auth');
 Route::post('/edit-profile', [UserController::class, 'update'])->middleware('auth');
 
@@ -30,3 +34,18 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+
+Route::post('/device/edit/{id}', [DeviceController::class, 'update']);
+Route::post('/device/delete/{id}', [DeviceController::class, 'destroy']);
+Route::post('/device/install', [DeviceController::class, 'store']);
+Route::post('/device/status', [DeviceController::class, 'setStatus']);
+Route::post('/device/batery', [DeviceController::class, 'setBatery']);
+Route::post('/device/kuota', [DeviceController::class, 'setKuota']);
+Route::get('/device/tes', function(){
+    DeviceStatusUpdate::dispatch('--');
+    return view('welcome');
+});
+Route::post('/device/tes', function(Request $request){
+    DeviceStatusUpdate::dispatch($request);
+    return view('welcome');
+});

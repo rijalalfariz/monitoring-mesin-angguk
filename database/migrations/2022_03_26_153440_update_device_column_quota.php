@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('devices', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('name');
-            $table->string('device_key');
-            $table->integer('battery');
-            $table->integer('status');
-            $table->integer('quota');
+        Schema::table('devices', function (Blueprint $table) {
+            $table->renameColumn('kuota', 'quota');
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devices');
+        Schema::table('devices', function (Blueprint $table) {
+            //
+        });
     }
 };

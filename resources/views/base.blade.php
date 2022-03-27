@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=100vw, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>{{ $pageTitle??'Title' }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
@@ -59,7 +59,8 @@
             padding: 0px 64px 0px 48px;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 4px 4px 16px rgba(0,0,0,0.25)
+            box-shadow: 4px 4px 16px rgba(0,0,0,0.25);
+            background-color: white;
         }
 
         .page-now {
@@ -85,6 +86,7 @@
 
         .content {
             display: block;
+            overflow: auto;
         }
 
         .device-table {
@@ -148,6 +150,9 @@
         .bg-ff {
             background-color: white;
         }
+        .bg-54 {
+            background-color: #54F076;
+        }
 
         .shadow-small {
             box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
@@ -165,6 +170,19 @@
         .mr36 {
             margin-right: 36px;
         }
+        .mt10v {
+            margin-top: 10vh;
+        }
+
+        .p64{
+            padding: 64px;
+        }
+        .pb36 {
+            padding-bottom: 36px;
+        }
+        .pt36 {
+            padding-top: 36px;
+        }
 
         .btn {
             border: none;
@@ -179,6 +197,10 @@
             width: 120px;
         }
 
+        .div-grow {
+            flex-basis: 0;
+            flex-grow: 1;
+        }
     </style>
     <style>
         .h-screen {
@@ -220,13 +242,89 @@
             border: none;
             outline: none;
         }
+        .form-input:disabled {
+            background-color: #FBF4D0;
+        }
+
+        .table-input {
+            border-radius: 8px;
+            border: 1px solid #30475e4f;
+            font-size: 16px;
+            padding: 4px  12px;
+        }
+        .table-input:focus {
+            outline: 1px solid #30475e;
+        }
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .status0 {
+            color: #F05454;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+        }
+
+        a{
+            color: unset;
+        }
+        a:hover{
+            color: unset;
+            text-decoration: none;
+        }
+    </style>
+    <style>
+        .profile-card {
+            height: fit-content;
+            min-height: 312px;
+            width: fit-content;
+            min-width: 720px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .foto-profil-container {
+            width: 240px;
+            height: 240px;
+            border-radius: 300px;
+        }
     </style>
 </head>
 <body>
-    @yield('content')
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{{ url('js/app.js') }}"></script>
+    <script>
+        $(function(){
+            const Echo = window.Echo;
+    
+            console.log('tes')
+            let deviceChannel = Echo.channel('device-status');
+    
+            deviceChannel.listen('DeviceStatusUpdate', function(event) {
+                console.log('listen');
+                console.log(event);
+                if (event.status!='' && (event.status==1 || event.status==0)) {
+                    let status = event.status==1?'Berjalan':'Berhenti';
+                    if (event.status==1){
+                        $(`.table-content-item[data-id-device="${event.deviceID}"]`).find('.DeviceStatus').removeClass('status0')
+                    } else {
+                        $(`.table-content-item[data-id-device="${event.deviceID}"]`).find('.DeviceStatus').addClass('status0')
+                    }
+                    $(`.table-content-item[data-id-device="${event.deviceID}"]`).find('.DeviceStatus').text(status)
+                }
+                if (event.quota!='') {
+                    $(`.table-content-item[data-id-device="${event.deviceID}"]`).find('.DeviceQuota').text(event.quota+' MB')
+                }
+                if (event.battery!='') {
+                    $(`.table-content-item[data-id-device="${event.deviceID}"]`).find('.DeviceBattery').text(event.battery)
+                }
+            });
+        })
+    </script>
+
+    @yield('content')
+
 </body>
 </html>

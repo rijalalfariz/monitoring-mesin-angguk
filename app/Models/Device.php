@@ -10,8 +10,9 @@ class Device extends Model
     use HasFactory;
 
     protected $fillable = [
+        'device_key',
         'name',
-        'batery',
+        'battery',
         'status',
         'kuota'
     ];

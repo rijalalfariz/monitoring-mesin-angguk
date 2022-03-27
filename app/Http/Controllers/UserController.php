@@ -9,7 +9,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('profile');
+        return view('profile', [
+            'pageTitle' => 'Profile'
+        ]);
     }
 
     public function edit()
@@ -32,6 +34,8 @@ class UserController extends Controller
 
     public function profile()
     {
-        return view('profile');
+        return view('profile', [
+            'pageTitle' => 'Profile'
+        ]);
     }
 }
