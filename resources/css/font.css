@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'Raleway-Regular';
+    src: url('../fonts/Raleway-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway-Medium';
+    src: url('../fonts/Raleway-Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway-SemiBold';
+    src: url('../fonts/Raleway-SemiBold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway-Bold';
+    src: url('../fonts/Raleway-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway-Light';
+    src: url('../fonts/Raleway-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ff-bold {
+    font-family: 'Raleway-Bold';
+}
+
+.ff-semibold {
+    font-family: 'Raleway-SemiBold';
+}
+
+.ff-medium {
+    font-family: 'Raleway-Medium';
+}
+
+.ff-regular {
+    font-family: 'Raleway-Regular';
+}
+
+.ff-light {
+    font-family: 'Raleway-Light';
+}
+
+.fs-8 {
+    font-size: 8px;
+}
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.fs-36 {
+    font-size: 36px;
+}
+
+.fc-54 {
+    color: #54F076;
+}
+
+.fc-f0 {
+    color: #f05454;
+}
+
+.elipsis1 {
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

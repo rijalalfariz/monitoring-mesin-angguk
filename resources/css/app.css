@@ -1,3 +1,9 @@
-.table-input {
-    border-radius: 8px;
+@import url('./table.css');
+@import url('./font.css');
+@import url('./custom.css');
+@import url('./layout.css');
+@import url('./spacing.css');
+* {
+    font-family: 'Raleway-Medium';
+    font-variant-numeric: lining-nums;
 }

@@ -25,6 +25,10 @@ Route::post('/device/install', [DeviceApiController::class, 'store']);
 Route::post('/device/status/{id}', [DeviceApiController::class, 'setStatus']);
 Route::post('/device/battery/{id}', [DeviceApiController::class, 'setBattery']);
 Route::post('/device/quota/{id}', [DeviceApiController::class, 'setQuota']);
+Route::post('/device/tipe-device/{id}', [DeviceApiController::class, 'setTipeDevice']);
+Route::post('/device/ampere/{id}', [DeviceApiController::class, 'setAmpere']);
+Route::post('/device/tegangan/{id}', [DeviceApiController::class, 'setTegangan']);
+Route::post('/device/update/{id}', [DeviceApiController::class, 'updateAllDeviceParameter']);
 
 Route::post('/device/tes', function(){
     DeviceStatusUpdate::dispatch('heloo1');

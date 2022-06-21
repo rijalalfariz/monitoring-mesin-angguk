@@ -21,11 +21,12 @@ use GuzzleHttp\Psr7\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('dashboard');
 });
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/monitoring', [DashboardController::class, 'monitoring'])->middleware('auth')->name('monitoring');
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
-Route::get('/edit-profile', [UserController::class, 'edit'])->middleware('auth');
+// Route::get('/edit-profile', [UserController::class, 'edit'])->middleware('auth');
 Route::post('/edit-profile', [UserController::class, 'update'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

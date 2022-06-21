@@ -11,8 +11,19 @@ class DashboardController extends Controller
     {
         $devices = Device::all()->sortBy('id');
         return view('dashboard', [
-            'devices' => $devices,
+            'devices_ampere' => $devices->where('tipe_device', 0),
+            'devices_tegangan' => $devices->where('tipe_device', 1),
             'pageTitle' => 'Dashboard'
         ]);
+    }
+
+    public function monitoring()
+    {
+        $devices = Device::all()->sortBy('id');
+        return view('monitoring', [
+            'devices_ampere' => $devices->where('tipe_device', 0),
+            'devices_tegangan' => $devices->where('tipe_device', 1),
+            'pageTitle' => 'Monitoring'
+        ]);        
     }
 }

@@ -19,19 +19,25 @@ class DeviceStatusUpdate implements ShouldBroadcast
     public $battery;
     public $quota;
     public $deviceID;
+    public $tipe_device;
+    public $ampere;
+    public $tegangan;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($deviceID, $status='', $battery='', $quota='', $message='')
+    public function __construct($deviceID, $status='', $battery='', $quota='',  $tipe_device='',  $ampere='',  $tegangan='', $message='')
     {
         $this->message = $message;
         $this->status = $status;
         $this->battery = $battery;
         $this->quota = $quota;
         $this->deviceID = $deviceID;
+        $this->tipe_device = $tipe_device;
+        $this->ampere = $ampere;
+        $this->tegangan = $tegangan;
     }
 
     /**

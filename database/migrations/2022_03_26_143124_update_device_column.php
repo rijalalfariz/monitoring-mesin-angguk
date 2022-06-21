@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('devices', function (Blueprint $table) {
-            $table->renameColumn('batery', 'battery');
+            // $table->renameColumn('batery', 'battery');
         });
     }
 

@@ -18,9 +18,13 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('device_key');
-            $table->integer('battery');
+            $table->float('battery');
             $table->integer('status');
-            $table->integer('quota');
+            $table->text('quota');
+            $table->integer('tipe_device');
+            $table->float('tegangan');
+            $table->float('ampere');
+            $table->integer('company')->default(1);
         });
     }
 

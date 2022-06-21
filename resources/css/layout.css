@@ -1,0 +1,79 @@
+.div-grow {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+.h-screen {
+    height: 100vh;
+}
+
+.bg-f0 {
+    background-color: #f05454;
+}
+
+.bg-ee {
+    background-color: #eef2f6;
+}
+
+.bg-30 {
+    background-color: #30475e;
+}
+
+.bg-ff {
+    background-color: white;
+}
+
+.bg-54 {
+    background-color: #54F076;
+}
+
+.shadow-small {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-big {
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-big-2 {
+    box-shadow: 8px 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.btn {
+    border: none;
+    border-radius: 1000px;
+    height: 48px;
+    color: #f05454;
+}
+
+.btn.bg-f0 {
+    color: white;
+}
+
+.btn.fix {
+    width: 120px;
+}
+
+.circle48 {
+    border-radius: 48px;
+    width: 48px;
+    height: 48px;
+}
+
+.center-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.between-middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.between-end {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}

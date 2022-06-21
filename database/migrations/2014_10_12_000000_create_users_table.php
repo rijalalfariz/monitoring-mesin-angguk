@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
+            $table->string('image')->default('default_profile.jpg');
+            $table->integer('position')->default(1);
+            $table->integer('company')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

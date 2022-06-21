@@ -1,0 +1,51 @@
+.mb36 {
+    margin-bottom: 36px;
+}
+
+.mb18 {
+    margin-bottom: 18px;
+}
+
+.mr36 {
+    margin-right: 36px;
+}
+
+.mt36 {
+    margin-top: 36px;
+}
+
+.mt10v {
+    margin-top: 10vh;
+}
+
+.p24 {
+    padding: 24px;
+}
+
+.p36 {
+    padding: 36px;
+}
+
+.p64 {
+    padding: 64px;
+}
+
+.pb36 {
+    padding-bottom: 36px;
+}
+
+.pt36 {
+    padding-top: 36px;
+}
+
+.lh-1 {
+    line-height: 1;
+}
+
+.lh-normal {
+    line-height: normal;
+}
+
+.lh-48 {
+    line-height: 48px;
+}

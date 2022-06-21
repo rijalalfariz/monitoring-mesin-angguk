@@ -2208,64 +2208,67 @@ console.log('listen1');
 /*!***********************************!*\
   !*** ./resources/js/dashboard.js ***!
   \***********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-$('.EditBtn').on('click', function () {
-  $('.DeviceName').each(function (elem) {
-    if ($(this).find('input').length > 0) {
-      $(this).html('');
-      $(this).text($(this).data('name'));
-    }
-  });
+var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    trim = _require.trim;
+
+$(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+$(document).on('click', '.EditBtn', function () {
+  // let parent = $(this).parents('.device-card');
   var parent = $(this).parents('.table-content-item');
-  var NamaDevice = $(this).parents('.table-content-item').find('.DeviceName').text();
-  var html = "<input class=\"head-table-text table-input NameInput\" type=\"text\" placeholder=\"Nama Device\" style=\"width: 240px\">";
+  var NamaDevice = trim(parent.find('.DeviceName').text());
+  var html = "<input class=\"head-table-text table-input NameInput\" type=\"text\" placeholder=\"Nama Device\" style=\"width: 100%\">";
+  console.log(parent);
   parent.find('.DeviceName').html('');
   parent.find('.DeviceName').html(html);
   parent.find('.NameInput').val(NamaDevice);
   parent.find('.OriginalBtnGroup').hide();
-  parent.find('.EditBtnGroup').show(); // $(this).parents('.table-content-item').find('.DeviceName').remove();
+  parent.find('.EditBtnGroup').show();
 });
-$('.UpdateDevice').on('click', function () {
-  var parent = $(this).parents('.table-content-item');
+$(document).on('click', '.UpdateDevice', function () {
+  var parent = $(this).parents('.table-content-item'); // let parent = $(this).parents('.device-card');
 
   var _token = $('input[name="_token"]').val();
 
   $.ajax({
     type: 'post',
-    url: "/device/edit/".concat(parent.data('id-device')),
+    url: "/device/edit/".concat(parent.data('deviceid')),
     data: {
       DeviceName: parent.find('.NameInput').val(),
       _token: _token
     },
     success: function success(response) {
       var data = JSON.parse(response);
-      $('.CancelUpdateDevice').trigger('click');
-      console.log(data['DeviceName']);
-      console.log(data.DeviceName);
+      parent.find('.DeviceName').html(data['DeviceName']); // $('.CancelUpdateDevice').trigger('click');
 
       if (data['DeviceName'] != '') {
-        parent.find('.DeviceName').text(data['DeviceName']);
+        window.location.reload();
       }
     }
   });
 });
-$('.CancelUpdateDevice').on('click', function () {
-  var parent = $(this).parents('.table-content-item');
+$(document).on('click', '.CancelUpdateDevice', function () {
+  var parent = $(this).parents('.table-content-item'); // let parent = $(this).parents('.device-card');
+
   var deviceNameColumn = parent.find('.DeviceName');
   deviceNameColumn.html('');
   deviceNameColumn.text(deviceNameColumn.data('name'));
   parent.find('.OriginalBtnGroup').show();
   parent.find('.EditBtnGroup').hide();
 });
-$('.DeleteBtn').on('click', function () {
-  var parent = $(this).parents('.table-content-item');
+$(document).on('click', '.DeleteBtn', function () {
+  var parent = $(this).parents('.table-content-item'); // let parent = $(this).parents('.device-card');
+
   var deviceName = parent.find('.DeviceName').data('name');
+  console.log(parent.find('.DeviceName'));
   $('#modalConfirmDelete').modal('show');
   $('#modalConfirmDelete .DeviceName').text(deviceName);
-  $('#DeleteDevice').removeAttr('data-id-device').attr("data-id-device", "".concat(parent.data('id-device')));
+  $('#DeleteDevice').removeAttr('data-id-device').attr("data-id-device", "".concat(parent.data('deviceid')));
 });
-$('#DeleteDevice').on('click', function () {
+$(document).on('click', '#DeleteDevice', function () {
   var _token = $('input[name="_token"]').val();
 
   $.ajax({
@@ -2282,6 +2285,22 @@ $('#DeleteDevice').on('click', function () {
       }
     }
   });
+});
+$(document).on('click', '.DetailBtn', function () {
+  var parent = $(this).parents('.device-card');
+
+  if (!parent.hasClass('expanded')) {
+    $('.device-card.expanded').find('.DetailBtn').trigger('click');
+  }
+
+  parent.toggleClass('expanded');
+  parent.find('.device-detail').slideToggle();
+  parent.find('.ActionButtonGroup').slideToggle();
+});
+document.addEventListener('click', function (e) {
+  if (!$(e.target).is('.device-card.expanded *')) {
+    $('.device-card.expanded').find('.DetailBtn').trigger('click');
+  }
 });
 
 /***/ }),
