@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('tipe_device');
             $table->float('tegangan');
             $table->float('ampere');
-            $table->integer('company')->default(1);
+            $table->integer('company_id')->default(1);
         });
     }
 
