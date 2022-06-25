@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Company;
+use App\Models\Position;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use ParagonIE\Sodium\Compat;
 
 return new class extends Migration
 {
@@ -18,8 +21,8 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('image')->default('default_profile.jpg');
-            $table->integer('position_id')->default(1);
-            $table->integer('company_id')->default(1);
+            $table->foreignIdFor(Position::class);
+            $table->foreignIdFor(Company::class);
             $table->rememberToken();
             $table->timestamps();
         });
