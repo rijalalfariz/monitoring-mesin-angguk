@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Company;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->integer('tipe_device');
             $table->float('tegangan');
             $table->float('ampere');
-            $table->integer('company_id')->default(1);
+            $table->foreignIdFor(Company::class);
         });
     }
 
