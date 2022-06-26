@@ -23,10 +23,10 @@ return new class extends Migration
             $table->float('battery');
             $table->integer('status');
             $table->text('quota');
-            $table->foreignIdFor(DeviceType::class);
+            $table->foreignIdFor(DeviceType::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->float('tegangan');
             $table->float('ampere');
-            $table->foreignIdFor(Company::class);
+            $table->foreignIdFor(Company::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

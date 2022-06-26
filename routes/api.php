@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\DeviceStatusUpdate;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\DeviceApiController;
 use App\Http\Controllers\DeviceController;
 use Illuminate\Http\Request;
@@ -34,4 +35,6 @@ Route::post('/device/tes', function(){
     DeviceStatusUpdate::dispatch('heloo1');
     return view('welcome');
 });
+
+Route::get('tes', [Controller::class, 'dump_function_test']);
 

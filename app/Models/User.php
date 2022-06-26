@@ -20,6 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
+        'position_id',
+        'company_id',
         'image'
     ];
 
@@ -41,4 +43,14 @@ class User extends Authenticatable
     // protected $casts = [
     //     'email_verified_at' => 'datetime',
     // ];
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

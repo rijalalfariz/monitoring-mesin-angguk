@@ -16,4 +16,19 @@ class Device extends Model
         'status',
         'kuota'
     ];
+
+    public function device_type()
+    {
+        return $this->belongsTo(DeviceType::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function device_status_histories()
+    {
+        return $this->hasMany(DeviceStatusHistory::class);
+    }
 }

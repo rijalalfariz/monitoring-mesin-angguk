@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Device;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +14,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('devices', function (Blueprint $table) {
-            // $table->renameColumn('kuota', 'quota');
+        Schema::create('device_status_histories', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->integer('status');
+            $table->foreignIdFor(Device::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('devices', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('device_status_histories');
     }
 };

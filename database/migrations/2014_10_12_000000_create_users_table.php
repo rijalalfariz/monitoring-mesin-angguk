@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('image')->default('default_profile.jpg');
-            $table->foreignIdFor(Position::class);
-            $table->foreignIdFor(Company::class);
+            $table->foreignIdFor(Position::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Company::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

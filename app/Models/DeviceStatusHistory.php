@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DeviceType extends Model
+class DeviceStatusHistory extends Model
 {
     use HasFactory;
 
-    public function devices()
+    public function device()
     {
-        return $this->hasMany(Device::class);
+        return $this->belongsTo(Device::class);
     }
 }
