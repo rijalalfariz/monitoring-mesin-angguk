@@ -29,6 +29,8 @@ class Controller extends BaseController
             2 => $user->position->name
         ];
 
+        // ==========================================
+
         // $company = new Company();
         // $company->name = 'PT. Pertamina EP Cepu';
         // $company->address = 'Ledok, Cepu';
@@ -54,15 +56,15 @@ class Controller extends BaseController
         // $user = new User();
         // $user->username = 'admin';
         // $user->password = bcrypt('12345678');
-        // $user->position()->associate(Position::find(1));
-        // $user->company()->associate(Company::find(1));
+        // $user->position_id = 1;
+        // $user->company_id = 1;
         // $result[5] = $user->save();
 
         // $user = new User();
         // $user->username = 'operator';
         // $user->password = bcrypt('12345678');
-        // $user->position()->associate(Position::find(2));
-        // $user->company()->associate(Company::find(1));
+        // $user->position_id = 2;
+        // $user->company_id = 1;
         // $result[6] = $user->save();
 
         // $result[7] = $this->make_dump_device('L. 226');
@@ -97,8 +99,8 @@ class Controller extends BaseController
         $deviceCreated->quota = 'Kuota belum terdefinisi';
         $deviceCreated->tegangan = '0';
         $deviceCreated->ampere = '0';
-        $deviceCreated->device_type()->associate(DeviceType::find($deviceType));
-        $deviceCreated->company()->associate(Company::find(1));
+        $deviceCreated->device_type_id = $deviceType;
+        $deviceCreated->company_id = 1;
         $deviceCreated->save();
 
         if ($deviceCreated->save()) {

@@ -90,9 +90,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-@media only screen and (min-width: 720px) {
-    .sidebar {
-        display: inline;
+@media only screen and (max-width: 600px) {
+    .page-now {
+        display: none;
     }
     #sidebar-btn {
         display: block;
@@ -110,7 +110,7 @@
 
 .sidebar {
     width: 18.75vw;
-    min-width: 18.75vw;
+    min-width: 154px;
     height: 100vh;
     /* display: none; */
     box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25)
@@ -155,6 +155,7 @@
 
 .navbar {
     width: 100%;
+    min-width: 300px;
     min-height: 64px;
     padding: 8px 64px 8px 48px;
     align-items: center;

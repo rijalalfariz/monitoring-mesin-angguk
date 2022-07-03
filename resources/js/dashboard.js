@@ -87,6 +87,10 @@ $(document).on('click', '.DetailBtn', function() {
     parent.find('.ActionButtonGroup').slideToggle();
 })
 
+$(document).on('click', '#sidebar-btn', function() {
+    $('.sidebar').toggle();
+})
+
 document.addEventListener('click', function(e) {
     if (!$(e.target).is('.device-card.expanded *')) {
         $('.device-card.expanded').find('.DetailBtn').trigger('click');

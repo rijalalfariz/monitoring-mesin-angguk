@@ -56,23 +56,21 @@
                             </div>
                             <div class="table-content">
                                 @forelse ($devices_tegangan as $device)
-                                    @if ($device->tipe_device == 1)
-                                        <div class="table-content-item
-                                            @if($loop->index%2!=0) 
-                                            odd
-                                            @endif
-                                        " data-deviceid="{{ $device->id }}">
-                                            <span class="head-table-text" style="width: 48px">{{ $loop->index + 1 }}</span>
-                                            <span class="head-table-text DeviceName" style="width: 180px" data-name="{{ $device->name }}">{{ $device->name }}</span>
-                                            <span class="head-table-text status{{ $device->status }} DeviceStatus ff-bold" style="width: 120px">
-                                            @if ($device->status == 1)
-                                                Berjalan
-                                            @else
-                                                Berhenti
-                                            @endif
-                                            </span>
-                                        </div>
-                                    @endif
+                                    <div class="table-content-item
+                                        @if($loop->index%2!=0) 
+                                        odd
+                                        @endif
+                                    " data-deviceid="{{ $device->id }}">
+                                        <span class="head-table-text" style="width: 48px">{{ $loop->index + 1 }}</span>
+                                        <span class="head-table-text DeviceName" style="width: 180px" data-name="{{ $device->name }}">{{ $device->name }}</span>
+                                        <span class="head-table-text status{{ $device->status }} DeviceStatus ff-bold" style="width: 120px">
+                                        @if ($device->status == 1)
+                                            Berjalan
+                                        @else
+                                            Berhenti
+                                        @endif
+                                        </span>
+                                    </div>
                                 @empty
                                     <div class="text-center pt-4">Belum ada data</div>
                                 @endforelse
