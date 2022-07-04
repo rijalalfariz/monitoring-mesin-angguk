@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Device;
+use App\Models\DeviceStatusHistory;
 use App\Models\DeviceType;
 use App\Models\Position;
 use App\Models\User;
@@ -22,14 +23,29 @@ class Controller extends BaseController
     {
         $result = [];
 
-        $user = User::find(1);
+        // $user = User::find(1);
 
-        $result = [
-            1 => $user->company->address,
-            2 => $user->position->name
-        ];
+        // $result = [
+        //     1 => $user->company->address,
+        //     2 => $user->position->name
+        // ];
 
         // ==========================================
+
+        // $deviceHistory = new DeviceStatusHistory();
+        // $deviceHistory->status = 0;
+        // $deviceHistory->device_id = 12;
+        // $result[0] = $deviceHistory->save();
+
+        // $deviceHistory = new DeviceStatusHistory();
+        // $deviceHistory->status = 0;
+        // $deviceHistory->device_id = 2;
+        // $result[1] = $deviceHistory->save();
+
+        // $deviceHistory = new DeviceStatusHistory();
+        // $deviceHistory->status = 1;
+        // $deviceHistory->device_id = 3;
+        // $result[2] = $deviceHistory->save();
 
         // $company = new Company();
         // $company->name = 'PT. Pertamina EP Cepu';

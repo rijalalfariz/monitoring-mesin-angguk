@@ -31,4 +31,9 @@ class Device extends Model
     {
         return $this->hasMany(DeviceStatusHistory::class);
     }
+
+    public function get_last_off_history()
+    {
+        return $this->hasOne(DeviceStatusHistory::class)->latestOfMany();
+    }
 }
