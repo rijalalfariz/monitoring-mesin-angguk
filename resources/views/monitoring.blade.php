@@ -12,7 +12,7 @@
 
                 <div class="fs-18 ff-bold my-3">Sumur Pakai Elektrik Motor</div>
 
-                <div class="device-table">
+                <div class="device-table lg">
                     <div class="head-table">
                         <span class="head-table-text mr-3" style="width: 32px; min-width: 28px;">No.</span>
                         <span class="head-table-text" style="width: 125px; min-width: 108px;">Nama Mesin</span>
@@ -86,7 +86,7 @@
 
                 <div class="fs-18 ff-bold mb-3 mt-5">Sumur Pakai Gas Engine</div>
 
-                <div class="device-table">
+                <div class="device-table lg">
                     <div class="head-table">
                         <span class="head-table-text mr-3" style="width: 32px; min-width: 28px;">No.</span>
                         <span class="head-table-text" style="width: 125px; min-width: 108px;">Nama Mesin</span>

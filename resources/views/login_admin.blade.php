@@ -26,8 +26,8 @@
             </div>
             <div class="sub-form-container-1">
                 <h2 class="text-center">Log In</h2>
-                <h5 class="fs-12 text-center mb36 fc-80">(Operator)</h5>
-                <form action="/login" method="post" class="d-flex flex-column">
+                <h5 class="fs-12 text-center mb36 fc-80">(Admin)</h5>
+                <form action="/login-admin" method="post" class="d-flex flex-column">
                     @csrf
                     <div class="form-text-small mb-1">Username</div>
                     <input class="mb36 form-input" type="text" placeholder="username" name="username">
@@ -37,8 +37,8 @@
                     <div class="button-group mb18 justify-content-center d-flex">
                         <button class="btn fix bg-f0 shadow-big" type="submit">Login</button>
                     </div>
-                    <a class="text-center fs-12 fc-17 link" href="/login-admin">
-                        Login Sebagai Admin
+                    <a class="text-center fs-12 fc-17 link" href="/login">
+                        Login Sebagai Operator
                         {{-- <button class="btn fix bg-ff shadow-big mr36" type="button">Login Sebagai Admin</button> --}}
                     </a>
                 </form>
@@ -46,4 +46,14 @@
         </div>
 
     </div>
+
+    <script>
+        $(document).ready(function(){
+            @if ($errors->any())
+                setTimeout(() => {
+                    alert('{{ $errors->first('loginFailed') }}')
+                }, 500);
+            @endif
+        })
+    </script>
 @endsection

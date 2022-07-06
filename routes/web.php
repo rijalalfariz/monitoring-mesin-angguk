@@ -32,6 +32,8 @@ Route::post('/edit-profile', [UserController::class, 'update'])->middleware('aut
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/login-admin', [LoginController::class, 'login_admin'])->middleware('guest');
+Route::post('/login-admin', [LoginController::class, 'authenticate_admin']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
