@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\DeviceStatusUpdate;
 use App\Models\Device;
+use App\Models\DeviceStatusHistory;
 use Illuminate\Http\Request;
 
 class DeviceApiController extends Controller
@@ -32,7 +33,8 @@ class DeviceApiController extends Controller
         $deviceCreated->battery = $request->battery??100;
         $deviceCreated->status = $request->status_device??1;
         $deviceCreated->quota = $request->quota??'Kuota belum terdefinisi';
-        $deviceCreated->tipe_device = $request->tipe_device??'0';
+        $deviceCreated->device_type_id = $request->tipe_device??'1';
+        $deviceCreated->company_id = $request->company_id??'1';
         $deviceCreated->tegangan = $request->tegangan??'0';
         $deviceCreated->ampere = $request->ampere??'0';
         $deviceCreated->save();
@@ -84,6 +86,9 @@ class DeviceApiController extends Controller
         DeviceStatusUpdate::dispatch($id, $request->status_device);
         $device = Device::find($id);
         $device->status = $request->status_device;
+
+        $deviceStatusHistory = new DeviceStatusHistory();
+
         return $device->save();
     }
     public function setBattery(Request $request, $id)
@@ -104,7 +109,7 @@ class DeviceApiController extends Controller
     {
         DeviceStatusUpdate::dispatch($id, '', '', '', $request->tipe_device);
         $device = Device::find($id);
-        $device->tipe_device = $request->tipe_device??0;
+        $device->tipe_device = $request->tipe_device??1;
         return $device->save();
     }
     public function setAmpere(Request $request, $id)
