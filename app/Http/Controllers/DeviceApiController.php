@@ -86,8 +86,12 @@ class DeviceApiController extends Controller
         DeviceStatusUpdate::dispatch($id, $request->status_device);
         $device = Device::find($id);
         $device->status = $request->status_device;
+        $device->save();
 
         $deviceStatusHistory = new DeviceStatusHistory();
+        $deviceStatusHistory->status = $request->status_device;
+        $deviceStatusHistory->device_id = $id;
+        $deviceStatusHistory->save();
 
         return $device->save();
     }
@@ -143,6 +147,14 @@ class DeviceApiController extends Controller
         if ($request->tegangan) {
             $device->tegangan = $request->tegangan;
         }
+
+        $device->save();
+
+        $deviceStatusHistory = new DeviceStatusHistory();
+        $deviceStatusHistory->status = $request->status_device;
+        $deviceStatusHistory->device_id = $id;
+        $deviceStatusHistory->save();
+
         return $device->save();
 
 

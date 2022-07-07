@@ -99,6 +99,7 @@
 
         $(document).on('click', '#StopAlert', function(){
             stopSoundAlert();
+            window.location.reload();
         })
     </script>
 
