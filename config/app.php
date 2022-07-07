@@ -69,7 +69,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // 'timezone' => 'UTC','Asia/Singapore'
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
