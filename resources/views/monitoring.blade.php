@@ -46,7 +46,7 @@
                                     <div class="tooltip" role="tooltip" style="max-width: 300px;"><div class="arrow"></div><div class="tooltip-inner fs-12" style="max-width: 300px;"></div></div>
                                     '
                                     >{{ $device->quota }}</span>
-                                <span class="head-table-text DeviceBattery" style="width: 60px; min-width: 60px;">{{ $device->battery }} %</span>
+                                <span class="head-table-text DeviceBattery" style="width: 60px; min-width: 60px;">{{ round($device->battery) }} %</span>
                                 <span class="head-table-text DeviceAmpere" style="width: 60px; min-width: 36px;">{{ $device->ampere }}</span>
                                 @if ( Auth::user()->position_id == 1 )
                                     <span class="head-table-text text-center d-flex justify-content-center AcitionColumn" style="width: 120px">
@@ -124,7 +124,7 @@
                                     <div class="tooltip" role="tooltip" style="max-width: 300px;"><div class="arrow"></div><div class="tooltip-inner fs-12" style="max-width: 300px;"></div></div>
                                     '
                                     >{{ $device->quota }}</span>
-                                <span class="head-table-text DeviceBattery" style="width: 60px; min-width: 60px;">{{ $device->battery }} %</span>
+                                <span class="head-table-text DeviceBattery" style="width: 60px; min-width: 60px;">{{ round($device->battery) }} %</span>
                                 <span class="head-table-text DeviceTegangan" style="width: 60px; min-width: 36px;">{{ $device->tegangan }}</span>
                                 @if ( Auth::user()->position_id == 1 )
                                     <span class="head-table-text text-center d-flex justify-content-center AcitionColumn" style="width: 120px">
