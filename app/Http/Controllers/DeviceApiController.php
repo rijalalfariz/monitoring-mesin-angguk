@@ -135,16 +135,16 @@ class DeviceApiController extends Controller
     {
         DeviceStatusUpdate::dispatch($id, $request->status_device??'', $request->battery??'', '', '', $request->ampere??'', $request->tegangan??'');
         $device = Device::find($id);
-        if ($request->status_device) {
+        if (isset($request->status_device)) {
             $device->status = $request->status_device;
         }
-        if ($request->battery) {
+        if (isset($request->battery)) {
             $device->battery = $request->battery;
         }
-        if ($request->ampere) {
+        if (isset($request->ampere)) {
             $device->ampere = $request->ampere;
         }
-        if ($request->tegangan) {
+        if (isset($request->tegangan)) {
             $device->tegangan = $request->tegangan;
         }
 
