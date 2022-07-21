@@ -23,6 +23,7 @@ class DashboardController extends Controller
         return view('monitoring', [
             'devices_ampere' => $devices->where('device_type_id', 1),
             'devices_tegangan' => $devices->where('device_type_id', 2),
+            'devices_kosongan' => $devices->where('device_type_id', 3),
             'pageTitle' => 'Monitoring'
         ]);        
     }

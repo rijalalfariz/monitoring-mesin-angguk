@@ -166,6 +166,32 @@
 
                 </div>
 
+                <div class="fs-18 ff-bold mb-3 mt-5">Mesin Belum Terpasang</div>
+
+                <div class="device-table lg">
+                    <div class="head-table">
+                        <span class="head-table-text mr-3" style="width: 32px; min-width: 28px;">No.</span>
+                        <span class="head-table-text div-grow" style="min-width: 108px;">Nama Mesin</span>
+                    </div>
+                    <div class="table-content">
+                        @forelse ($devices_kosongan as $device)
+                            <div class="table-content-item
+                                @if($loop->index%2!=0) 
+                                odd
+                                @endif
+                            " data-deviceid="{{ $device->id }}">
+                                <span class="head-table-text mr-3" style="width: 32px; min-width: 28px;">{{ $loop->index + 1 }}</span>
+                                <span class="head-table-text DeviceName div-grow" style="width: 125px; min-width: 108px;" data-name="{{ $device->name }}">{{ $device->name }}</span>
+
+                            </div>
+                        @empty
+                            <div class="text-center pt-4">Belum ada data</div>
+                        @endforelse
+                        
+                    </div>
+
+                </div>
+
                 {{-- @forelse ($devices as $device)
                     <div class="device-card d-inline-block shadow-big" data-deviceid="{{ $device->id }}">
                         <div class="device-card-inner d-flex align-items-between bg-white py-5 px-3">
