@@ -69,9 +69,9 @@ class Controller extends BaseController
         // $device_type->name = 'Gas Engine';
         // $result[4] = $device_type->save();
         
-        $device_type = new DeviceType();
-        $device_type->name = 'Mesin Belum Terpasang';
-        $result[0] = $device_type->save();
+        // $device_type = new DeviceType();
+        // $device_type->name = 'Mesin Belum Terpasang';
+        // $result[0] = $device_type->save();
 
         // $user = new User();
         // $user->username = 'admin';
@@ -106,9 +106,9 @@ class Controller extends BaseController
         // $result[22] = $this->make_dump_device('L. 163 Arrow', 2);
         // $result[23] = $this->make_dump_device('L. 207 Arrow', 2);
 
-        $result[1] = $this->make_dump_device('Mesin Kosong 1', 3);
-        $result[2] = $this->make_dump_device('Mesin Kosong 2', 3);
-        $result[3] = $this->make_dump_device('Mesin Kosong 3', 3);
+        // $result[1] = $this->make_dump_device('Mesin Kosong 1', 3);
+        // $result[2] = $this->make_dump_device('Mesin Kosong 2', 3);
+        // $result[3] = $this->make_dump_device('Mesin Kosong 3', 3);
         return json_encode($result);
     }
 
