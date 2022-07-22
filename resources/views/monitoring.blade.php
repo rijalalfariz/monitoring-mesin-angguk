@@ -74,7 +74,7 @@
                                         </button>
                                     </span>
                                 @endif
-                                <span class="head-table-text DeviceAmpere" style="width: 120px; min-width: 120px;">
+                                <span class="head-table-text DeviceStatusHistory" style="width: 120px; min-width: 120px;">
                                     @if ($device->get_last_off_history != null && $device->get_last_off_history->status == 0)
                                         {{ $device->get_last_off_history->created_at }}
                                     @endif
@@ -152,7 +152,7 @@
                                         </button>
                                     </span>
                                 @endif
-                                <span class="head-table-text DeviceAmpere" style="width: 120px; min-width: 120px;">
+                                <span class="head-table-text DeviceStatusHistory" style="width: 120px; min-width: 120px;">
                                     @if ($device->get_last_off_history != null && $device->get_last_off_history->status == 0)
                                         {{ $device->get_last_off_history->created_at }}
                                     @endif
