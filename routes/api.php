@@ -38,3 +38,7 @@ Route::post('/device/tes', function(){
 
 Route::get('tes', [Controller::class, 'dump_function_test']);
 
+//temporary
+Route::post('/device/tesbattery/{id}', [DeviceApiController::class, 'setRandomBattery']);
+Route::post('/device/tesampere/{id}', [DeviceApiController::class, 'setRandomAmppere']);
+

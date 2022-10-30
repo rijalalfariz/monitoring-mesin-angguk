@@ -171,4 +171,34 @@ class DeviceApiController extends Controller
         // return $device->save();
     }
 
+    // Fungsi biar kelihatan seakan2 nyata
+    public function setRandomBattery(Request $request, $id)
+    {
+        $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8];
+        foreach ($idToUpdate as $value) {
+            $randomBatteryValue = rand(0, 1);
+            $device = Device::find($id);
+            $device->battery = $device->battery - $randomBatteryValue;
+            $result = $device->save();
+            if (!$result) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    public function setRandomAmpere(Request $request, $id)
+    {
+        $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8];
+        foreach ($idToUpdate as $value) {
+            $randomAmpereValue = rand(-10, 10)/10;
+            $device = Device::find($id);
+            $device->ampere = $device->ampere + $randomAmpereValue;
+            $result = $device->save();
+            if (!$result) {
+                return 0;
+            }
+        }
+        return 1;        
+    }
+
 }
