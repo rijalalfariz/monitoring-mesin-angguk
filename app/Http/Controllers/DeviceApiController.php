@@ -177,13 +177,13 @@ class DeviceApiController extends Controller
         $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8];
         foreach ($idToUpdate as $value) {
             $randomBatteryValue = rand(0, 1);
-            DeviceStatusUpdate::dispatch($value, '', $randomBatteryValue);
             $device = Device::find($value);
             $device->battery = $device->battery - $randomBatteryValue;
             $result = $device->save();
             if (!$result) {
                 return 0;
             }
+            DeviceStatusUpdate::dispatch($value, '', $device->battery - $randomBatteryValue);
         }
         return 1;
     }
@@ -192,13 +192,13 @@ class DeviceApiController extends Controller
         $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8];
         foreach ($idToUpdate as $value) {
             $randomAmpereValue = rand(-10, 10)/10;
-            DeviceStatusUpdate::dispatch($value, '', '', '', '', $randomAmpereValue);
             $device = Device::find($value);
             $device->ampere = $device->ampere + $randomAmpereValue;
             $result = $device->save();
             if (!$result) {
                 return 0;
             }
+            DeviceStatusUpdate::dispatch($value, '', '', '', '', $device->ampere + $randomAmpereValue);
         }
         return 1;        
     }
