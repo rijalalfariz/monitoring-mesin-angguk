@@ -174,6 +174,7 @@ class DeviceApiController extends Controller
     // Fungsi biar kelihatan seakan2 nyata
     public function setRandomBattery(Request $request, $id)
     {
+        DeviceStatusUpdate::dispatch($id, '', $request->battery);
         $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8];
         foreach ($idToUpdate as $value) {
             $randomBatteryValue = rand(0, 1);
@@ -188,6 +189,7 @@ class DeviceApiController extends Controller
     }
     public function setRandomAmpere(Request $request, $id)
     {
+        DeviceStatusUpdate::dispatch($id, '', '', '', '', $request->ampere);
         $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8];
         foreach ($idToUpdate as $value) {
             $randomAmpereValue = rand(-10, 10)/10;

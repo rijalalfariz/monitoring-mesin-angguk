@@ -86,7 +86,7 @@
                     $(`.table-content-item[data-deviceid="${event.deviceID}"]`).find('.DeviceQuota').text(event.quota)
                 }
                 if (event.battery!='') {
-                    $(`.table-content-item[data-deviceid="${event.deviceID}"]`).find('.DeviceBattery').text(event.battery)
+                    $(`.table-content-item[data-deviceid="${event.deviceID}"]`).find('.DeviceBattery').text(event.battery+' %')
                 }
                 if (event.ampere!='') {
                     $(`.table-content-item[data-deviceid="${event.deviceID}"]`).find('.DeviceAmpere').text(event.ampere)
