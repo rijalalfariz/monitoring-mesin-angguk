@@ -181,26 +181,29 @@ class DeviceApiController extends Controller
             $device->battery = $device->battery - $randomBatteryValue;
             $result = $device->save();
             if (!$result) {
-                return 0;
+                break;
+                // return 0;
             }
             DeviceStatusUpdate::dispatch($value, '', $device->battery - $randomBatteryValue);
         }
-        return 1;
+        // return 1;
     }
     public function setRandomAmpere(Request $request, $id)
     {
         $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8];
+        $defaultAmperePerID = [1=>186.5, 2=>65, 3=>75, 4=>75, 5=>59.75, 6=>37.5, 7=>55, 8=>55];
         foreach ($idToUpdate as $value) {
-            $randomAmpereValue = rand(-10, 10)/10;
+            $randomAmpereValue = rand(-20, 20)/10;
             $device = Device::find($value);
-            $device->ampere = $device->ampere + $randomAmpereValue;
+            $device->ampere = (floor(($defaultAmperePerID[$value] + $randomAmpereValue)*10))/10;
             $result = $device->save();
             if (!$result) {
-                return 0;
+                break;
+                // return 0;
             }
-            DeviceStatusUpdate::dispatch($value, '', '', '', '', $device->ampere + $randomAmpereValue);
+            DeviceStatusUpdate::dispatch($value, '', '', '', '', (floor(($defaultAmperePerID[$value] + $randomAmpereValue)*10))/10);
         }
-        return 1;        
+        // return 1;
     }
 
 }
