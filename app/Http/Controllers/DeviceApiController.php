@@ -174,19 +174,18 @@ class DeviceApiController extends Controller
     // Fungsi biar kelihatan seakan2 nyata
     public function setRandomBattery(Request $request, $id)
     {
-        $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8];
+        $idToUpdate = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         foreach ($idToUpdate as $value) {
             $randomBatteryValue = rand(0, 1);
             $device = Device::find($value);
             $device->battery = $device->battery - $randomBatteryValue;
             $result = $device->save();
             if (!$result) {
-                break;
-                // return 0;
+                return 0;
             }
             DeviceStatusUpdate::dispatch($value, '', $device->battery - $randomBatteryValue);
         }
-        // return 1;
+        return 1;
     }
     public function setRandomAmpere(Request $request, $id)
     {
@@ -198,12 +197,29 @@ class DeviceApiController extends Controller
             $device->ampere = (floor(($defaultAmperePerID[$value] + $randomAmpereValue)*10))/10;
             $result = $device->save();
             if (!$result) {
-                break;
-                // return 0;
+                // break;
+                return 0;
             }
             DeviceStatusUpdate::dispatch($value, '', '', '', '', (floor(($defaultAmperePerID[$value] + $randomAmpereValue)*10))/10);
         }
-        // return 1;
+        return 1;
+    }
+    public function setRandomVolt(Request $request, $id)
+    {
+        $idToUpdate = [9];
+        $defaultVoltPerID = [9=>14];
+        foreach ($idToUpdate as $value) {
+            $randomVoltValue = rand(-20, 20)/10;
+            $device = Device::find($value);
+            $device->tegangan = (floor(($defaultVoltPerID[$value] + $randomVoltValue)*10))/10;
+            $result = $device->save();
+            if (!$result) {
+                // break;
+                return 0;
+            }
+            DeviceStatusUpdate::dispatch($value, '', '', '', '', '', $device->tegangan);
+        }
+        return 1;
     }
 
 }
